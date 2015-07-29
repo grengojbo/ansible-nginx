@@ -141,7 +141,7 @@ nginx_default_type: 'default'
 nginx_root_www_path: '/srv/www'
 
 # Default server root
-nginx_default_root: '{{ nginx_root_www_path + "/sites/default/public" }}'
+nginx_default_root: '{{ nginx_root_www_path + "/default/public" }}'
 
 # Create global webroot directories?
 # Path: /srv/www/sites/*/public

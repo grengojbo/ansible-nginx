@@ -36,8 +36,15 @@ into your playbook.
 [Try DebOps now](https://github.com/debops/debops) for a complete solution to run your Debian-based infrastructure.
 
 
+## Использование
 
+Тип сервера nginx для установки:
 
+    - **full** Версия по умолчанию из Debian
+    - **nginx.org** Авторская версия от [nginx.org](http://nginx.org/) собранные для Debian
+    - **passenger** nginx с поддержкой Phusion Passenger. Requires external APT repository. Смотрите [phusionpassenger.com](http://phusionpassenger.com/) для более подробной информации. 
+
+nginx_flavor: 'full'
 
 ### Authors and license
 

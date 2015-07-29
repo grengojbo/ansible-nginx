@@ -127,9 +127,9 @@
 #
 #   - item.owner: ''
 #       Optional. If specified, nginx will configure server root to
-#       '/srv/www/<owner>/sites/<item.name[0]>/public/', if not specified,
+#       nginx_root_www_path + '/<owner>/sites/<item.name[0]>/public/', if not specified,
 #       nginx will configure server root to
-#       '/srv/www/sites/<item.name[0]/public/'.
+#       nginx_root_www_path + '/sites/<item.name[0]/public/'.
 #
 #
 #   - item.keepalive: ''
@@ -165,7 +165,7 @@
 #   - item.root: ''
 #       Optional. Absolute path to server root to use for this server
 #       configuration. If not specified, nginx role will use
-#       '/srv/www/<item.name[0]>/public/' by default; see also 'item.owner'
+#       nginx_root_www_path + '/<item.name[0]>/public/' by default; see also 'item.owner'
 #       parameter.
 #
 #
@@ -351,9 +351,9 @@
 {% set nginx_tpl_root = item.root | default(nginx_default_root)                %}
 {% if (item.name is defined and item.name)                                     %}
 {%     if (item.owner is defined and item.owner)                               %}
-{%         set nginx_tpl_root = item.root | default('/srv/www/' + item.owner + '/sites/' + item.name[0] + '/public') %}
+{%         set nginx_tpl_root = item.root | default(nginx_root_www_path + '/' + item.owner + '/sites/' + item.name[0] + '/public') %}
 {%     else                                                                    %}
-{%         set nginx_tpl_root = item.root | default('/srv/www/sites/' + item.name[0] + '/public') %}
+{%         set nginx_tpl_root = item.root | default(nginx_root_www_path + '/' + item.name[0] + '/public') %}
 {%     endif                                                                   %}
 {% endif                                                                       %}
 {% if (item.root_suffix is defined and item.root_suffix)                       %}
