@@ -35,7 +35,7 @@ include /etc/nginx/rtmp.conf;
 http {
   # proxy_temp_path {{nginx_proxy_temp_path}};
   # proxy_cache_path {{nginx_proxy_cache_path_str}};
-  {% if nginx_source_modules_included.naxsi_module is defined %}
+  {% if nginx_flavor == 'source' and nginx_source_modules_included.naxsi_module is defined %}
   include /etc/nginx/naxsi_core.rules;
   {% endif %}
 	include /etc/nginx/mime.types;
