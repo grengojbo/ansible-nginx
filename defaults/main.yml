@@ -30,6 +30,12 @@ nginx_flavor_package_map:
   # Upstream version from http://nginx.org/ packaged for Debian
   'nginx.org': [ 'nginx' ]
 
+nginx_daemon_disable: False
+nginx_multi_accept: True
+nginx_rtmp_enable: False
+nginx_keepalive: 'off'
+nginx_buffers: False
+nginx_source_version: "1.9.0"
 
 # System user used by nginx
 nginx_user: 'www-data'
@@ -279,4 +285,45 @@ nginx_custom_config: []
   #  custom: |
   #    text block {
   #    }
+
+nginx_proxy_temp_path: "/var/tmp"
+nginx_proxy_cache_path: "/var/cache/nginx"
+nginx_proxy_cache_path_str: "/var/cache/nginx levels=1:2 keys_zone=one:8m max_size=3000m inactive=600m"
+nginx_proxy_read_timeout: null
+nginx_enable_rate_limiting: no
+nginx_rate_limiting_zone_name: "default"
+nginx_rate_limiting_backoff: "10m"
+nginx_rate_limit: "1r/s"
+nginx_client_body_buffer_size: "8k"
+nginx_client_header_buffer_size: "1k"
+nginx_client_max_body_size: "2m"
+nginx_large_client_header_buffers: "2 1k"
+
+# gzip_module
+nginx_gzip: 'on'
+nginx_gzip_http_version: 1.1
+nginx_gzip_comp_level: 2
+nginx_gzip_proxied: expired no-cache no-store private auth
+nginx_gzip_vary: 'on'
+nginx_gzip_buffers: null
+nginx_gzip_min_length: 10240
+nginx_gzip_types:
+  - text/plain
+  - text/css
+  - text/xml
+  - text/csv
+  - text/javascript
+  - application/x-javascript
+  - application/xml
+  - application/xml+rss
+  - application/javascript
+  - application/postscript
+  - application/pdf
+  - application/ecmascript
+  - application/json
+  - image/svg+xml
+
+# source
+nginx_source_url: "http://nginx.org/download/nginx-{{nginx_source_version}}.tar.gz"
+nginx_source_prefix: "/tmp/nginx-{{nginx_source_version}}"
 
